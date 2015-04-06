@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('semioFrontendApp', [
+  .module('semio', [
     'ngCookies',
     'ngResource',
     'ngRoute',
@@ -25,6 +25,10 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl'
       })
       .otherwise({
         redirectTo: '/'
