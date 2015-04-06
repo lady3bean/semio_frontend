@@ -1,5 +1,5 @@
 angular
-  .module('semio', [
+  .module('Semio', [
     'ngCookies',
     'ngResource',
     'ngRoute',

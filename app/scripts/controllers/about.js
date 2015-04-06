@@ -7,7 +7,7 @@
  * # AboutCtrl
  * Controller of the semioFrontendApp
  */
-angular.module('semio')
+angular.module('Semio')
   .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
