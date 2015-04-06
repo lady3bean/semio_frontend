@@ -7,7 +7,7 @@
             WordFactory.getWords();
         });
 
-    angular.module('WordManager')
+    angular.module('Semio')
         .constant('ServerUrl', 'http://localhost:3000');
 
 })();
