@@ -6,11 +6,11 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'ContentCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
