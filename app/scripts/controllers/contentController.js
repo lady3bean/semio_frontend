@@ -10,6 +10,7 @@
   function ContentCtrl( WordFactory ) {
       var vm = this;
 
+      vm.word = WordFactory.word;
       vm.words = WordFactory.words;
   }
 

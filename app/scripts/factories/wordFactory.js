@@ -8,6 +8,7 @@
   WordFactory.$inject = ['$http', 'ServerUrl'];
 
   function WordFactory( $http, ServerUrl ) {
+    var word = {};
     var words = [];
 
     function getWords() {

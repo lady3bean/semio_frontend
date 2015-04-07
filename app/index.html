@@ -22,9 +22,7 @@
     <!-- Add your site or application content here -->
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
-        <div class="container">
           <div class="navbar-header">
-
             <a class="navbar-brand" href="#/">semio</a>
           </div>
 
@@ -40,7 +38,8 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" ng-controller="ContentCtrl as contentCtrl">
+      <wordTree words="contentCtrl.words"></wordTree>
     <div ng-view=""></div>
     </div>
 
@@ -72,6 +71,7 @@
     <script src="scripts/factories/wordFactory.js"></script>
 
     <!-- directives -->
+    <script src="scripts/directives/wordTree.js"></script>
 
     <!-- controllers -->
     <script src="scripts/controllers/contentController.js"></script>
