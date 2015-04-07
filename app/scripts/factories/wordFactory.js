@@ -7,18 +7,18 @@
 
   WordFactory.$inject = ['$http', 'ServerUrl'];
 
-  function WordFactory( $http, ServerUrl) {
+  function WordFactory( $http, ServerUrl ) {
     var words = [];
 
     function getWords() {
-        return $http.get(ServerUrl + '/words')
-            .then(function(response) {
-                angular.copy(response.data, words);
-            });
+      return $http.get(ServerUrl + '/words')
+          .then(function(response) {
+              angular.copy(response.data, words);
+          });
     }
 
     return {
-      words: words
+      words: words,
       getWords: getWords
     };
 
