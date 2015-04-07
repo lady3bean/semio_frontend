@@ -1,11 +1,5 @@
 angular
-  .module('Semio', [
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
+  .module('Semio')
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
