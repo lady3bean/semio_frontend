@@ -7,8 +7,8 @@
  * # MainCtrl
  * Controller of the semioFrontendApp
  */
-angular.module('semioFrontendApp')
-  .controller('MainCtrl', function ($scope) {
+angular.module('Semio')
+  .controller('ContactCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
