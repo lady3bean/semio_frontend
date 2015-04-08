@@ -3,7 +3,7 @@ angular
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/wordTree.html',
         controller: 'ContentCtrl'
       })
       .when('/about', {
