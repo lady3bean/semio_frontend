@@ -9,9 +9,10 @@
       'ngSanitize',
       'ngTouch',
       'd3'])
-    .run(function(WordFactory) {
-        WordFactory.getWords();
-    });
+    .run();
+    // .run(function(WordFactory) {
+    //     WordFactory.getWords();
+    // });
 
   angular
     .module('Semio')
