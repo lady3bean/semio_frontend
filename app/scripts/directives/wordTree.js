@@ -3,19 +3,41 @@
 
   angular
     .module('Semio')
-    .directive('wordTree', wordTree);
+    .directive('wordTree', ['d3Service', function( d3Service ) {
 
-    function wordTree() {
       return {
-          restrict: 'E',
-          templateUrl: 'templates/wordTree.html',
-          scope: {
-              words: '='
-          },
-          controller:  ContentCtrl,
-          controllerAs: 'contentCtrl',
-          bindToController: true
-      };
-    }
+        restrict: 'EA',
+        scope: {
+          data: '='
+        },
+        template: '<div class="word-tree"></div>',
+  
+        link: function( scope, element, attrs, $window ) {
+          d3Service.d3().then(function(d3) {
 
+            var svg = d3.select(element[0])
+                        .append("svg")
+                        .style('width', '100%');
+
+
+
+            window.onresize = function() {
+              scope.$apply();
+            };
+
+            scope.$watch('data', function(newData) {
+              console.log(scope.data);
+              scope.render(newData);
+            }, true);
+
+            scope.render = function(data) {
+              svg.selectAll('*').remove();
+
+              if (!data) return;
+
+            };
+          });
+        }  
+      };
+    }]);
 })();

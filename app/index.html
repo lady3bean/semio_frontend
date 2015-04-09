@@ -20,6 +20,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+   
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
           <div class="navbar-header">
@@ -39,8 +40,8 @@
     </div>
 
     <div class="container" ng-controller="ContentCtrl as contentCtrl">
-      <wordTree words="contentCtrl.words"></wordTree>
-    <div ng-view=""></div>
+     <div word-tree data="data"></div>
+      <div ng-view=""></div>
     </div>
 
     <div class="footer">
@@ -70,14 +71,15 @@
     <!-- factories -->
     <script src="scripts/factories/wordFactory.js"></script>
 
-    <!-- directives -->
-    <script src="scripts/directives/wordTree.js"></script>
-
     <!-- controllers -->
     <script src="scripts/controllers/contentController.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/contact.js"></script>
 
+    <!-- directives -->
+    <script src="scripts/directives/wordTree.js"></script> 
+
     <!-- endbuild -->
+
 </body>
 </html>

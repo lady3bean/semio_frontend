@@ -1,9 +1,10 @@
+'use strict';
+
 angular
   .module('Semio')
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/wordTree.html',
         controller: 'ContentCtrl'
       })
       .when('/about', {
