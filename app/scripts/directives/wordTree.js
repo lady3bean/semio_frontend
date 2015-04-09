@@ -19,12 +19,15 @@
                         .append("svg")
                         .style('width', '100%');
 
+
+
             window.onresize = function() {
               scope.$apply();
             };
 
-            scope.$watch('data', function(newVals, oldVals) {
-              return scope.render(newVals);
+            scope.$watch('data', function(newData) {
+              console.log(scope.data);
+              scope.render(newData);
             }, true);
 
             scope.render = function(data) {
