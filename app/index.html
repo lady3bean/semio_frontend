@@ -15,38 +15,14 @@
     <!-- endbuild -->
   </head>
   <body ng-app="Semio">
+  <h2>sem.io</h2>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <!-- Add your site or application content here -->
-   
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#/">semio</a>
-          </div>
-
-          <div class="collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/contact">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="header"></div>
 
     <div class="container" ng-controller="ContentCtrl as contentCtrl">
      <div word-tree data="data"></div>
-      <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-      </div>
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -80,6 +56,5 @@
     <script src="scripts/directives/wordTree.js"></script> 
 
     <!-- endbuild -->
-
 </body>
 </html>
