@@ -10,9 +10,6 @@
       'ngTouch',
       'd3'])
     .run();
-    // .run(function(WordFactory) {
-    //     WordFactory.getWords();
-    // });
 
   angular
     .module('Semio')
@@ -27,7 +24,8 @@
     function onScriptLoad() {
 
       $rootScope.$apply(function() { 
-        d.resolve(window.d3); });
+        d.resolve(window.d3);
+      });
     }
 
     var scriptTag = $document[0].createElement('script');
@@ -36,7 +34,7 @@
     scriptTag.src = 'http://d3js.org/d3.v3.min.js';
 
     scriptTag.onreadystatechange = function() {
-      if (this.readyState == 'complete') {
+      if (this.readyState === 'complete') {
         onScriptLoad();
       }
     };
@@ -53,5 +51,4 @@
     };
 
   }]);
-
 })();
