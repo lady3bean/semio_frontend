@@ -1,7 +1,9 @@
 {
   "name": "semiofrontend",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "express": "~4.9.x"
+    },
   "repository": {},
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -37,6 +39,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "start": "node index.js",
     "test": "grunt test"
   }
 }
