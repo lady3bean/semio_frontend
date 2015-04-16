@@ -39,7 +39,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node app.js",
     "test": "grunt test"
   }
 }
