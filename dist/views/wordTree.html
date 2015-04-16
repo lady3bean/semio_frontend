@@ -1,0 +1,36 @@
+<h1>wordTreeeeeee</h1> <!-- <ul>
+    <li ng-repeat="word in contentCtrl.words">{{ word.spelling }}: {{ word.definition }}. Roots: {{ word.roots }} Offspring: {{ word.rooteds }} </li>
+</ul> --> <!-- why won't the console.log work from here? --> <!-- right now, traversing the word roots and rooteds is returning the root_id in the json and not the content of the word pointed to by the root_id, which is fine because I care about the pointers, the relationships, and do not want to reload the content of the word being pointed to, because it should already be there in the dom. Now, the logic is already there in AREL where word.roots and rooteds are returning the CollectionProxy. The idea is to visualize the relationship and reduce repition in etymologies by having words dynamically point to their references. I want to trace the connection back to the word through a visual line that represents the pointers.
+
+
+2.2.0 :002 > Word.last.roots
+  Word Load (0.7ms)  SELECT  "words".* FROM "words"  ORDER BY "words"."id" DESC LIMIT 1
+  Word Load (0.9ms)  SELECT "words".* FROM "words" INNER JOIN "word_roots" ON "words"."id" = "word_roots"."root_id" WHERE "word_roots"."word_id" = $1  [["word_id", 3]]
+ => #<ActiveRecord::Associations::CollectionProxy [#<Word id: 2, spelling: "parent", definition: "middle node with both roots and rooteds">]>
+
+ 2.2.0 :001 > Word.last.rooteds
+  Word Load (1.0ms)  SELECT  "words".* FROM "words"  ORDER BY "words"."id" DESC LIMIT 1
+  Word Load (0.9ms)  SELECT "words".* FROM "words" INNER JOIN "word_roots" ON "words"."id" = "word_roots"."word_id" WHERE "word_roots"."root_id" = $1  [["root_id", 3]]
+ => #<ActiveRecord::Associations::CollectionProxy []> 
+
+ I just switched the exported json so that it sends out only the word's rooteds. I could go the other way too, or have both, but I think it makes sense as a top-down metaphor, where each word's rooted_id is the word_id being pointed to. So the question is, how to traverse the json to find a word's rooteds (which will be elements already in the dom) and trace a line to them. Since the relationship is the same for any words and its roots, you ought to be able to trace the whole tree back, as a child's parent is a child to another parent, and so on, and a child can have multiple parents that do not have to be related to one another, without conflict
+
+ It therefore might not make sense to load a word's rooteds on click of that word, because its children could have roots that haven't been loaded in yet - i.e. I go down a chain of direct grandparent - parent - child relationships till I get to a child that's a compound noun that references a root that wasn't part of the chain I've clicked down so far - what then? Do I load in a word's roots as well as its rooteds on click? What about when one of its roots exists in the dom already but another does not? Maybe it makes sense to load it all in and not worry about when to load? A later feature idea was to organize the tree by date added and represent distance through time, which would give me a clearer hierarchy, but words will still point to multiple roots at different times throughout histroy and in different family trees, so there will be a mess no matter what, which is to be expected...
+
+I guess part of my confusion is that each word's relationships to other words is a unique set - and while they need to be traced individually for that word, other words may also have relationships to the same root, and so they all point back to that one word. I don't want to print out the words for each relationship, as the words should already exist, but I do want to trace for each relationship. And that's confusing because at once I do want to query for each word's roots and rooteds, but I don't want to reproduce the data from that query, but to point to them. 
+
+Link every node to its children nodes - this handles the case where children nodes are also parent nodes, as its parents will trace to them, and so on - and it's fine for when nodes have multiple, unrelated parents. 
+
+OK, so it looks like you first convert the json to assign in as links and nodes, which takes out some of the mystery here as to where the f they're getting nodes and links from in the examples 
+
+# Convert JSON arrays into data frames
+MisLinks <- JSONtoDF(jsonStr = MisJson, array = "links")
+MisNodes <- JSONtoDF(jsonStr = MisJson, array = "nodes")
+
+still though, this doesnt explain how it's assigning source and targets - I suppose it automatically assigns them via the source column
+
+"In the MisNodes data frame we have two columns: name and group. There is one record for each character (node) in the network. They are in the same order as the source column in MisLinks."
+
+so every node becomes a source, and its targets are other nodes - however, this does not explain how the targets are being dynamically assigned. In my case, targets are the word's rooteds, or the reverse if I want to do it the other way around and trace up to roots. Anyway, the trick is to assign the node as a target when it is another node's rooteds. 
+
+ -->
