@@ -3,7 +3,7 @@
 
   angular
     .module('Semio')
-    .directive('wordTree', ['d3Service', function( d3Service ) {
+    .directive('wordTree', ['d3Service', function( d3Service, ContentCtrl ) {
 
       return {
         restrict: 'EA',
@@ -11,6 +11,9 @@
           data: '='
         },
         template: '<div class="word-tree"></div>',
+        controller: ContentCtrl,
+        controlerAs: 'ContentCtrl',
+        bindToController: true,
   
         link: function( scope, element, attrs, $window ) {
           d3Service.d3().then(function(d3) {
@@ -28,6 +31,7 @@
             }, true);
 
             scope.render = function(data) {
+              console.log('yo from wordtree directive, ', data);
               svg.selectAll('*').remove();
 
               if (!data) return;

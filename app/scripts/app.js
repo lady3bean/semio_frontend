@@ -3,16 +3,13 @@
 
   angular
     .module('Semio', [
-      'ngCookies',
-      'ngResource',
       'ngRoute',
-      'ngSanitize',
-      'ngTouch',
       'd3'])
-    .run();
-    // .run(function(WordFactory) {
-    //     WordFactory.getWords();
-    // });
+    .run(function(WordFactory){
+      WordFactory.getWord(function(response) {
+        console.log(response);
+      });
+    });
 
   angular
     .module('Semio')
@@ -36,7 +33,7 @@
     scriptTag.src = 'http://d3js.org/d3.v3.min.js';
 
     scriptTag.onreadystatechange = function() {
-      if (this.readyState == 'complete') {
+      if (this.readyState === 'complete') {
         onScriptLoad();
       }
     };

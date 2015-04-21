@@ -3,19 +3,15 @@
 
   angular
     .module('Semio')
-    .controller('ContentCtrl', ['$scope', '$http',
-      function($scope, $http) {
-       
-      var data = [];
-      var words = [];
+    .controller('ContentCtrl', ContentCtrl);
 
-      $http.get('http://localhost:3000/words')
-        .then(function(response) {
-            angular.copy(response.data, words);
-            data.push(words);
-        });
+    ContentCtrl.$inject = ['WordFactory'];
 
-      $scope.data = data;
+    function ContentCtrl( WordFactory ) {
+      var vm = this;
 
-    }]);
+      vm.word = WordFactory.word;
+
+      console.log(vm.word);
+    }
 })();

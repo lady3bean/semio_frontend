@@ -1,28 +1,28 @@
-// (function() {
-//   'use strict';
+(function() {
+  'use strict';
 
-//   angular
-//     .module('Semio')
-//     .factory('WordFactory', WordFactory);
+  angular
+    .module('Semio')
+    .factory('WordFactory', WordFactory);
 
-//   WordFactory.$inject = ['$http', 'ServerUrl'];
+  WordFactory.$inject = ['$http', 'ServerUrl'];
 
-//   function WordFactory( $http, ServerUrl ) {
-//     var word = {};
-//     var words = [];
+  function WordFactory( $http, ServerUrl ) {
+    var word = [];
 
-//     function getWords() {
-//       return $http.get(ServerUrl + '/words')
-//           .then(function(response) {
-//               angular.copy(response.data, words);
-//           });
-//     }
+    function getWord() {
+      return $http.get(ServerUrl + '/words/695')
+          .then(function(response) {
+              angular.copy(response.data, word);
+              console.log(word);
+          });
+    }
 
-//     return {
-//       words: words,
-//       getWords: getWords
-//     };
+    return {
+      word: word,
+      getWord: getWord
+    };
 
-//   }
+  }
 
-// })();
+})();
