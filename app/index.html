@@ -16,10 +16,17 @@
   </head>
   <body ng-app="Semio">
   <h2>sem.io</h2>
+  <h3>sem.io is an ongoing project and the frontend visualization in d3.js for the API that I am crafting. See <a href="https://github.com/lady3bean/sem.io">the Github repo for the backend</a> for information about the project's effort to mine and organize dictionary data in a relational database. What you see below is a demo using <a href="https://github.com/mbostock/d3/wiki/Force-Layout">Mike Bostock's Force Layout.</a> <a href="https://lady3bean.github.io">Contact me</a> if you'd like to contribute or learn more about my work as a web developer.</a></h3>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
     <div class="header"></div>
+
+
+    <!-- Add your site or application content here -->
+    <div word-tree data="data"></div>
+    <div class="header">
 
     <div class="container" ng-controller="ContentCtrl as contentCtrl">
      <div word-tree data="data"></div>
